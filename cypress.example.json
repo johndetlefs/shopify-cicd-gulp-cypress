@@ -1,0 +1,6 @@
+{
+  "baseUrl": "https://your-shop-name.myshopify.com",
+  "env": {
+    "themeId": "123456789"
+  }
+}
