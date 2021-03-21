@@ -16,7 +16,7 @@ For a complete explainer video on how to use this repo please visit Johnny's Sch
 
 Clone this repo into your project root:
 
-`git clone https://thisrepo.com`
+`git clone https://github.com/johndetlefs/shopify-cicd-gulp-cypress.git`
 
 Next, install all required npm packages:
 
