@@ -1,7 +1,0 @@
-development:
-  password: yourprivateapppassword
-  theme_id: "123456789"
-  store: your.store.name.myshopify.com
-  directory: shop
-  ignore_files:
-    - config/settings_data.json

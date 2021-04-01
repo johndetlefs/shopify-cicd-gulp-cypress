@@ -1,0 +1,13 @@
+.some-snippet {
+    color: red;
+}
+
+.some-other-snippet {
+    color: green;
+}
+.some-other-snippet-snippet {
+    color: purple;
+}
+.some-other-snippet-snippet, .somet-other-snippet {
+    color: purple;
+}
