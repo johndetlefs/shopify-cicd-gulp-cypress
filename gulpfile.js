@@ -6,7 +6,7 @@ const autoprefixer = require("gulp-autoprefixer");
 const changed = require("gulp-changed");
 const concat = require("gulp-concat");
 const rename = require("gulp-rename");
-const sass = require("gulp-sass");
+const sass = require("gulp-dart-sass");
 const uglify = require("gulp-uglify");
 const scsslint = require("gulp-scss-lint");
 const replace = require("gulp-replace");
@@ -82,11 +82,7 @@ gulp.task("js-check", () => {
 gulp.task("js", () => {
   return gulp
     .src(jsFiles)
-    .pipe(
-      babel({
-        presets: ["@babel/preset-env"],
-      })
-    )
+    .pipe(babel())
     .pipe(concat("theme.js"))
     .pipe(gulp.dest(assetsDir))
     .pipe(rename("theme.min.js"))

@@ -121,6 +121,7 @@ The creation has been built off the back of several great resources which have b
 
 - Jase Warner's "Shopify + Gulp" - [Git Repo](https://github.com/jasewarner/gulp-shopify) - [Personal Website](https://jase.io)
 - Pixelcabin's "Building Integration Tests for Shopify Themes" - [Git Repo](https://github.com/pixelcabin/shopify_theme_integration_tests) - [Company Website](https://pixelcabin.io) - [Shopify Unite Video (Youtube)](http://bit.ly/pixelcabin-unite-gh)
+- Craig Buckler's "How to Use PostCSS as a Configurable Alternative to Sass" - [Sitepoint](https://www.sitepoint.com/postcss-sass-configurable-alternative/)
 
 ### Technologies used
 

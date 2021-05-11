@@ -1,10 +1,20 @@
 [
   {
     "name": "theme_info",
-    "theme_name": "Themekit template theme",
+    "theme_name": "Johnny's Dev School",
     "theme_version": "1.0.0",
-    "theme_author": "Shopify",
-    "theme_documentation_url": "https://github.com/Shopify/themekit",
-    "theme_support_url": "https://github.com/Shopify/themekit/issues"
+    "theme_author": "John Detlefs",
+    "theme_documentation_url": "https://github.com/johndetlefs/shopify-cicd-gulp-cypress",
+    "theme_support_url": "https://github.com/johndetlefs/shopify-cicd-gulp-cypress/issues"
+  },
+  {
+    "name": "Branding & Company Info",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "logo_image",
+        "label": "Company Logo"
+      }
+    ]
   }
 ]

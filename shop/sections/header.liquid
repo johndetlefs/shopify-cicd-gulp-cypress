@@ -1,0 +1,86 @@
+{% capture header_logo %}
+    <a href="/" class="logo-link d-inline-block rounded-2" title="{{ shop.name | escape }} - Click to go to home page">
+        {% if settings.logo_image %}
+            <img class="" src="{{ settings.logo_image | img_url: 'x39' }}"/>
+            <span class="visually-hidden">{{ shop.name | escape }} Logo</span>
+        {% else %}
+            <h1>{{ shop.name | escape }}</h1>
+        {% endif %}
+    </a>
+{% endcapture %}
+
+{% capture search_button %}
+    <button type="button" class="header-button" title="Search">
+        <span class="btn-label"><i class="bi-search"></i></span>
+        <span class="visually-hidden">Search</span>
+    </button>
+{% endcapture %}
+
+{% capture wishlist_button %}
+    <button type="button" class="header-button" title="Wishlist">
+        <span class="btn-label"><i class="bi-heart"></i></span>
+        <span class="visually-hidden">Wishlist</span>
+    </button>
+{% endcapture %}
+
+{% capture cart_button %}
+    <button type="button" class="header-button" title="Minicart">
+        <span class="btn-label"><i class="bi-cart"></i></span>
+        <span class="visually-hidden">Mini Cart</span>
+    </button>
+{% endcapture %}
+
+{% capture account_button %}
+    <a href="/account" class="header-button" style="color: black !important;" title="Account">
+        <span class="btn-label"><i class="bi-person"></i></span>
+        <span class="visually-hidden">Account</span>
+    </a>
+{% endcapture %}
+
+{% capture navigation_main %}
+    {% for link in linklists.main-menu.links %}
+        {% assign child_list_handle = link.title | handleize %}
+        {% if linklists[child_list_handle].links != blank %}
+            <a class="me-1 text-uppercase btn" href="{{ link.url }}" title="{{ link.title }}">{{ link.title }}</a>
+            [{% for childlink in linklists[child_list_handle].links %}
+            <a class="" href="{{ childlink.url }}" title="{{ childlink.title }}">{{ childlink.title | escape }}</a>
+        {% endfor %}]
+        {% else %}
+            <a class="me-1 text-uppercase btn" href="{{ link.url }}" title="{{ link.title }}">{{ link.title }}</a>
+        {% endif %}
+    {% endfor %}
+{% endcapture %}
+
+<header class="p-2">
+    <div class="mobile-header">
+        <div class="logo">
+            {{ header_logo }}
+        </div>
+        <nav class="mobile-navigation">
+            {{ navigation_main }}
+        </nav>
+        <div class="header-actions"></div>
+    </div>
+    <div class="desktop-header row align-items-center">
+        <div class="col logo">
+            {{ header_logo }}
+        </div>
+        <div class="col desktop-nav d-flex justify-content-center">
+            <nav class="desktop-navigation">
+                {{ navigation_main }}
+            </nav>
+        </div>
+        <div class="col desktop-actions d-flex justify-content-end align-items-center">
+            {{ search_button }}
+            {{ wishlist_button }}
+            {{ account_button }}
+            {{ cart_button }}
+        </div>
+    </div>
+</header>
+
+{% schema %}
+
+
+
+{% endschema %}
