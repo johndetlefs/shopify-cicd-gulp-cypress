@@ -15,6 +15,7 @@ upload
 deploy.log
 config.yml
 config-stg.yml
+shop/assets
 
 # Compiled source #
 ###################
