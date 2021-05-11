@@ -7,3 +7,12 @@ body {
   -webkit-font-smoothing: antialiased;
   min-height: 100%;
 }
+
+// Accessibility
+
+a, button, .btn {
+  &:focus {
+    outline: none;
+    box-shadow: 0 0 0 0.2rem rgba(255, 181, 0, 0.5);
+  }
+}

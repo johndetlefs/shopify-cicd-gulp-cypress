@@ -1,0 +1,46 @@
+{% if section.settings.enable_block_announcement_bar %}
+  {% if section.settings.homepage_only and template.name != "index" %}
+  {% else %}
+    <div id="announcement-blocks" class="row">
+      {% for block in section.blocks %}
+        <div class="col">
+          {{ block.settings.content }}
+        </div>
+      {% endfor %}
+    </div>
+  {% endif %}
+{% endif %}
+
+{% schema %}
+{
+"name" : "Announcement Bar - Blocks",
+"settings": [
+{
+"type": "checkbox",
+"id": "enable_block_announcement_bar",
+"label": "Show Block Announcement Bar",
+"default": true
+},
+{
+"type": "checkbox",
+"id": "homepage_only",
+"label": "Show On Homepage Only",
+"default": false
+}
+],
+"blocks": [
+{
+"type": "announcement_blocks",
+"name": "Announcement Blocks",
+"limit": 4,
+"settings": [
+{
+"id": "content",
+"type": "text",
+"label": "Block text"
+}
+]
+}
+]
+}
+{% endschema %}

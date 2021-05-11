@@ -1,6 +1,10 @@
 {
-  "baseUrl": "https://your-shop-name.myshopify.com",
+  "baseUrl": "https://storename.myshopify.com",
   "env": {
-    "themeId": "123456789"
-  }
+    "storeName": "store-name",
+    "themeId": "123456789",
+    "password": "yourdevpassword"
+  },
+  "viewportWidth": 1200,
+  "viewportHeight": 660
 }
