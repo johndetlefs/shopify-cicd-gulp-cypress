@@ -11,36 +11,38 @@
   {% endif %}
 {% endif %}
 
-{% schema %}
-{
-"name" : "Announcement Bar - Blocks",
-"settings": [
-{
-"type": "checkbox",
-"id": "enable_block_announcement_bar",
-"label": "Show Block Announcement Bar",
-"default": true
-},
-{
-"type": "checkbox",
-"id": "homepage_only",
-"label": "Show On Homepage Only",
-"default": false
-}
-],
-"blocks": [
-{
-"type": "announcement_blocks",
-"name": "Announcement Blocks",
-"limit": 4,
-"settings": [
-{
-"id": "content",
-"type": "text",
-"label": "Block text"
-}
-]
-}
-]
-}
-{% endschema %}
+<script>
+    const settings =
+            {
+                "name" : "Announcement Bar - Blocks",
+                "settings": [
+                    {
+                        "type": "checkbox",
+                        "id": "enable_block_announcement_bar",
+                        "label": "Show Block Announcement Bar",
+                        "default": true
+                    },
+                    {
+                        "type": "checkbox",
+                        "id": "homepage_only",
+                        "label": "Show On Homepage Only",
+                        "default": false
+                    }
+                ],
+                "blocks": [
+                    {
+                        "type": "announcement_blocks",
+                        "name": "Announcement Blocks",
+                        "limit": 4,
+                        "settings": [
+                            {
+                                "id": "content",
+                                "type": "text",
+                                "label": "Block text"
+                            }
+                        ]
+                    }
+                ]
+            };
+</script>
+

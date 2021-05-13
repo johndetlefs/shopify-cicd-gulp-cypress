@@ -1,86 +1,146 @@
 {% capture header_logo %}
-    <a href="/" class="logo-link d-inline-block rounded-2" title="{{ shop.name | escape }} - Click to go to home page">
-        {% if settings.logo_image %}
-            <img class="" src="{{ settings.logo_image | img_url: 'x39' }}"/>
-            <span class="visually-hidden">{{ shop.name | escape }} Logo</span>
-        {% else %}
-            <h1>{{ shop.name | escape }}</h1>
-        {% endif %}
-    </a>
+  <a href="/" class="logo-link d-inline-block rounded-2" title="{{ shop.name | escape }} - Click to go to home page">
+    {% if settings.logo_image %}
+      <img class="" src="{{ settings.logo_image | img_url: 'x39' }}"/>
+      <span class="visually-hidden">{{ shop.name | escape }} Logo</span>
+    {% else %}
+      <h1>{{ shop.name | escape }}</h1>
+    {% endif %}
+  </a>
 {% endcapture %}
 
 {% capture search_button %}
-    <button type="button" class="header-button" title="Search">
-        <span class="btn-label"><i class="bi-search"></i></span>
-        <span class="visually-hidden">Search</span>
-    </button>
+  <button type="button" class="header-button" title="Search">
+    <span class="btn-label"><i class="bi-search"></i></span>
+    <span class="visually-hidden">Search</span>
+  </button>
 {% endcapture %}
 
 {% capture wishlist_button %}
-    <button type="button" class="header-button" title="Wishlist">
-        <span class="btn-label"><i class="bi-heart"></i></span>
-        <span class="visually-hidden">Wishlist</span>
-    </button>
+  <button type="button" class="header-button" title="Wishlist">
+    <span class="btn-label"><i class="bi-heart"></i></span>
+    <span class="visually-hidden">Wishlist</span>
+  </button>
 {% endcapture %}
 
 {% capture cart_button %}
-    <button type="button" class="header-button" title="Minicart">
-        <span class="btn-label"><i class="bi-cart"></i></span>
-        <span class="visually-hidden">Mini Cart</span>
-    </button>
+  <button type="button" class="header-button" title="Minicart">
+    <span class="btn-label"><i class="bi-cart"></i></span>
+    <span class="visually-hidden">Mini Cart</span>
+  </button>
 {% endcapture %}
 
 {% capture account_button %}
-    <a href="/account" class="header-button" style="color: black !important;" title="Account">
-        <span class="btn-label"><i class="bi-person"></i></span>
-        <span class="visually-hidden">Account</span>
-    </a>
+  <a href="/account" class="header-button" style="color: black !important;" title="Account">
+    <span class="btn-label"><i class="bi-person"></i></span>
+    <span class="visually-hidden">Account</span>
+  </a>
+{% endcapture %}
+
+{% capture mobile_navigation_button %}
+  <button type="button" class="header-button" type="button" title="Mobile navigation - click to toggle open/close"
+          data-bs-toggle="modal" data-bs-target="#mobile-navigation">
+    <span class="btn-label"><i class="bi-list"></i></span>
+    <span class="visually-hidden">Open Main Navigation</span>
+  </button>
 {% endcapture %}
 
 {% capture navigation_main %}
-    {% for link in linklists.main-menu.links %}
+  <nav>
+    <ul class="nav flex-column flex-md-row">
+      {% for link in linklists.main-menu.links %}
         {% assign child_list_handle = link.title | handleize %}
         {% if linklists[child_list_handle].links != blank %}
-            <a class="me-1 text-uppercase btn" href="{{ link.url }}" title="{{ link.title }}">{{ link.title }}</a>
-            [{% for childlink in linklists[child_list_handle].links %}
-            <a class="" href="{{ childlink.url }}" title="{{ childlink.title }}">{{ childlink.title | escape }}</a>
-        {% endfor %}]
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button"
+               aria-expanded="false">{{ link.title }}</a>
+            <ul class="dropdown-menu px-2">
+              <li class="">
+                <a class="me-1 text-uppercase dropdown-item" href="{{ link.url }}"
+                   title="{{ link.title }}">{{ link.title }}</a>
+              </li>
+              {% for childlink in linklists[child_list_handle].links %}
+                <li class="">
+                  <a class="dropdown-item" href="{{ childlink.url }}"
+                     title="{{ childlink.title }}">{{ childlink.title | escape }}</a>
+                </li>
+              {% endfor %}
+            </ul>
+
+          </li>
         {% else %}
-            <a class="me-1 text-uppercase btn" href="{{ link.url }}" title="{{ link.title }}">{{ link.title }}</a>
+          <li class="nav-item">
+            <a class="me-1 text-uppercase nav-link" href="{{ link.url }}"
+               title="{{ link.title }}">{{ link.title }}</a>
+          </li>
         {% endif %}
-    {% endfor %}
+      {% endfor %}
+    </ul>
+
+  </nav>
 {% endcapture %}
 
-<header class="p-2">
-    <div class="mobile-header">
+<script>
+    // Move focus to close button upon modal creation
+    window.onload = function () {
+
+        const navModal = document.querySelector('#mobile-navigation');
+        const navClose = document.querySelector('#mobile-navigation .btn-close');
+
+        navModal.addEventListener('shown.bs.modal', function () {
+            navClose.focus();
+        });
+    }
+</script>
+
+<!-- Mobile Navigation Modal -->
+<div class="modal fade" id="mobile-navigation" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-fullscreen">
+    <div class="modal-content">
+      <div class="modal-header">
         <div class="logo">
-            {{ header_logo }}
+          {{ header_logo }}
         </div>
-        <nav class="mobile-navigation">
-            {{ navigation_main }}
-        </nav>
-        <div class="header-actions"></div>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body d-flex flex-column align-content-center">
+        {{ navigation_main }}
+      </div>
+      <div class="modal-footer">
+      </div>
     </div>
-    <div class="desktop-header row align-items-center">
-        <div class="col logo">
-            {{ header_logo }}
-        </div>
-        <div class="col desktop-nav d-flex justify-content-center">
-            <nav class="desktop-navigation">
-                {{ navigation_main }}
-            </nav>
-        </div>
-        <div class="col desktop-actions d-flex justify-content-end align-items-center">
-            {{ search_button }}
-            {{ wishlist_button }}
-            {{ account_button }}
-            {{ cart_button }}
-        </div>
+  </div>
+</div>
+
+<header class="p-2">
+  <!-- Mobile Header -->
+  <div class="mobile-header row align-items-center justify-content-between">
+    <div class="col mobile-nav-button" id="mobile-menu-button">
+      {{ mobile_navigation_button }}
     </div>
+    <div class="col logo d-flex justify-content-center">
+      {{ header_logo }}
+    </div>
+    <div class="col d-flex justify-content-end header-actions">
+      {{ search_button }}
+      {{ cart_button }}
+    </div>
+  </div>
+  <!-- Desktop Header -->
+  <div class="desktop-header row align-items-center">
+    <div class="col logo">
+      {{ header_logo }}
+    </div>
+    <div class="col desktop-nav d-flex justify-content-center">
+      <div class="desktop-navigation">
+        {{ navigation_main }}
+      </div>
+    </div>
+    <div class="col desktop-actions d-flex justify-content-end align-items-center">
+      {{ search_button }}
+      {{ wishlist_button }}
+      {{ account_button }}
+      {{ cart_button }}
+    </div>
+  </div>
 </header>
-
-{% schema %}
-
-
-
-{% endschema %}

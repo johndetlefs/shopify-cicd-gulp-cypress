@@ -9,6 +9,7 @@ header {
     .mobile-header {
       display: none;
     }
+
   }
 
   .header-button {
@@ -25,6 +26,8 @@ header {
 
   nav {
     a, a.btn {
+      text-transform: uppercase;
+      color: rgb(var(--primary-color)) !important;
       text-decoration: none;
       font-size: 0.95rem;
       padding: .2rem .5rem;
@@ -34,4 +37,13 @@ header {
     }
   }
 
+}
+
+
+@media screen and (max-width: 768px) {
+
+  #mobile-navigation .dropdown-menu.show {
+    position: static !important;
+    transform: translate3d(0px, 10px, 0px) !important;
+  }
 }
