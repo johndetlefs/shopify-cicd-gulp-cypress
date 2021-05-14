@@ -24,24 +24,24 @@ header {
 
   }
 
-  nav {
-    a, a.btn {
-      text-transform: uppercase;
-      color: rgb(var(--primary-color)) !important;
-      text-decoration: none;
-      font-size: 0.95rem;
-      padding: .2rem .5rem;
-      &:hover {
-        text-decoration: underline;
-      }
+}
+
+header nav, #mobile-navigation nav {
+  a, a.btn, a.nav-link {
+    text-transform: uppercase;
+    color: rgb(var(--primary-color)) !important;
+    text-decoration: none;
+    font-size: 0.95rem;
+    padding: .2rem .5rem;
+    &:hover {
+      text-decoration: underline;
     }
   }
-
 }
 
 
 @media screen and (max-width: 768px) {
-
+  // prevents hover effect with mobile navigation
   #mobile-navigation .dropdown-menu.show {
     position: static !important;
     transform: translate3d(0px, 10px, 0px) !important;
